@@ -1,0 +1,37 @@
+*{
+margin:0px;
+padding:0px;
+}
+
+body{
+text-align:center;
+background:#0090CE;
+ 
+background-size:cover;
+   
+background-attachment:fixed;
+
+
+}
+div{
+border-width:100%;
+border-bottom:20px solid red;
+}
+.class1{
+height:100%;
+width:100%;
+
+    position: absolute;
+    margin-top: 7%;
+    right: 0;
+    width: 280px;
+    height: 380px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 50px 50px 10px 0px;
+    box-shadow: 10px 0 10px rgba(0.5, 0, 0, 0.1);
+}
+}
+.class2{
+text-align:left;
+}

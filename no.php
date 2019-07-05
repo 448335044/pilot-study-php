@@ -1,0 +1,12 @@
+<html>
+<head>
+<link type="text/css" href="css/img.css" rel="stylesheet">
+<link type="text/css" href="css/bottom.css" rel="stylesheet">
+</head>
+<body>
+<?php
+echo "<img class=img src='img/no.png'>";
+?>
+<button class="mid" onClick="window.open('major.php')" >返回</button>
+</body>
+</html>

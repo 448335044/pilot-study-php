@@ -1,0 +1,54 @@
+
+<?php
+header("Content-type:text/html;charset=utf-8");
+include"func.php";
+//接收表单的数据
+
+/*
+$username=$_POST['username'];
+$birth=$_POST['birth'];
+$tel=$_POST['tel'];
+$mess=$_POST['mess'];
+//验证不能为空
+if ($username == '' || $birth == ''||$tel == '' || $mess == '') {
+	echo "<script>alert('请把信息填写完整!');
+	window.location.href='forget.php';</script>";
+	exit;
+}
+*/
+$username = $_POST['username'];
+$tel = $_POST['tel'];
+$idcard=$_POST['idcard'];
+//验证不能为空
+if ($username == '' || $tel == ''||$idcard=="") {
+	echo "<script>alert('请填写完整的验证信息！');
+	window.location.href='forget.php';</script>";
+	exit;
+}
+$coon=connect();
+
+$sql = "select * from admin where name='{$username}' and tel='{$tel}' and idcard='{$idcard}' ";
+$res = mysqli_query($coon,$sql);
+$row = mysqli_num_rows($res);
+if (!$row) {
+	echo "<script>alert('用户名或密码验证错误!');
+	window.location.href='forget.php';</script>";
+	exit;
+}
+	
+echo "<script>confirm('验证成功！是否修改密码？');
+	window.location.href='modify_pass.php?name=$username';</script>";
+
+
+
+
+
+
+mysqli_free_reslut($res);
+mysqli_close($coon);
+
+?>
+
+
+
+

@@ -1,0 +1,32 @@
+ <?php
+ header('Content-Type:text/html;charset=utf-8');
+ session_start();
+
+     $image = imagecreatetruecolor(100, 20);          //����һ��������
+     $bgcolor = imagecolorallocate($image, 255, 255, 255);//����������ɫ��
+     imagefill($image, 0, 0, $bgcolor);                 //��仭������
+     $verifycode = '';
+     for ($i = 0; $i < 4; $i++) {
+         $fontsize = 8;                               //�����������С��
+         $fontcolor = imagecolorallocate($image, 0, 0, 0);//������ɫ��
+         $fontcontent = rand(0, 9);                    //�������ݡ�
+         $verifycode .= $fontcontent;
+         $x = ($i * 100 / 4) + rand(5, 10);
+         $y = rand(5, 10);                             //������������λ�á�
+         imagestring($image, $fontsize, $x, $y, $fontcontent, $fontcolor);
+     }                      //ˮƽ��仭һ���ַ�����
+     $_SESSION["verifycode_text"] = $verifycode;
+     for ($i = 0; $i < 200; $i++) {
+         $pointcolor = imagecolorallocate($image, rand(0, 125), rand(0, 125), rand(0, 125));
+         imagesetpixel($image, rand(0, 99), rand(0, 29), $pointcolor);
+     }
+     for ($i = 0; $i < 4; $i++) {
+         $linecolor = imagecolorallocate($image, rand(125.255), rand(125, 255), rand(125, 255));
+         imageline($image, rand(0, 99), rand(0, 29), rand(0, 99), rand(0, 29), $linecolor);
+     }
+     header("content-type:image/png");          //����Ϊpng��ʽ��Ϊͼ��
+     ob_clean();//��������������е����ݡ�
+     imagepng($image);            //��png��ʽ��ͼ���������������ļ���
+     imagedestory($image);        // ����ͼ��
+
+?>

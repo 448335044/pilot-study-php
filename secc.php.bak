@@ -1,0 +1,4 @@
+<?PHP
+$username=$_GET["username"];
+echo "欢迎".$name."登录成功";
+?>

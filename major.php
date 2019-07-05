@@ -1,0 +1,108 @@
+<?php
+ session_start(); 
+ include"func.php";
+ include"common.php";
+ check();
+
+
+       $link=connect();
+
+?>
+<html>
+<head>
+    <meta http-equiv="content-type" ;content="text/html;charset=utf-8"/>
+    <title>雇员表</title>
+    <link rel="stylesheet" type="text/css" href="css/bottom.css"/>
+	<link rel="stylesheet" type="text/css" href="css/major.css"/>
+</head>
+<body >
+
+
+<?php include"nav.php";
+
+?>
+
+<div class="text">    
+ <?php
+ 
+        $rowcount=0;
+        $pagenow=1; 
+        $pagecount=0;
+        $pagesize=4; 
+        
+        ($pagenow == '' || !is_numeric( $pagenow ) || $pagenow < 1) && $pagenow = 1; 
+        $pagenow = $_GET['pagenow'];
+        $pagenow = intval( $pagenow );
+        $pagenow = isset($_GET['pagenow']) ? intval($_GET['pagenow']) : 1;
+        $sql="select * from  art_admin1 " ;
+        $res=mysqli_query($link,$sql);
+
+        $rowcount = mysqli_num_rows( $res );
+        $pagecount=ceil($rowcount/$pagesize); 
+        
+
+        
+        $Limit_one = ($pagenow - 1) * $pagesize; 
+
+
+        $sql = " select * from `art_admin1` limit {$Limit_one}, $pagesize";
+        $res=mysqli_query($link,$sql);
+
+
+       /*
+        if (!$res) {
+        printf("Error: %s\n", mysqli_error($link));
+        exit();
+        }
+       */
+
+       
+
+        while($row=mysqli_fetch_assoc($res))
+        {
+
+            echo "&nbsp标题：".$row['title']."</br>";
+            echo "&nbsp作者：".$row['author']."</br>";
+            $imgid=$row['id'];
+            
+
+	echo "<a   href='bg.php?id=$imgid'><button>详情</button></a><hr>";
+       
+
+        }
+
+      mysqli_free_result($res);
+        mysqli_close($link);
+
+
+        $page_code="";
+        if($pagenow>1) {
+            $page_code.="<a class='login_btn' href='".$_SERVER['PHP_SELF']."?pagenow=1'>&nbsp首页</a>";
+            $page_code.= "<a class='login_btn' href='" . $_SERVER['PHP_SELF'] . "?pagenow=" . ($pagenow - 1) . "'>上一页</a>";
+        }
+        
+
+        if($pagenow<$pagecount) {
+            $page_code.= "<a class='login_btn' href='" . $_SERVER['PHP_SELF'] . '?pagenow=' . ($pagenow + 1) . "'>下一页</a>";
+            $page_code.= "<a class='login_btn' href='" . $_SERVER['PHP_SELF'] . "?Pagenow={$pagecount}'>尾页</a>";
+
+        }
+
+        $page_code.="共".$pagecount."页";
+		
+        $bar=$page_code;
+		?>
+		<div class="bar">
+		<?php echo$bar; ?>
+         跳转到第
+		 </div>
+		 <div >
+		 <form action='page1.php' method='get'>
+        <input type='text' size='2' name='p'>
+        <input class='login_btn' type='submit' value='确定'>
+        </form>
+        </div>
+</div>
+<button class="mid" onClick="window.open('add_artcal.php')" >添加信息</button>
+</body>
+</html>

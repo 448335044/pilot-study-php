@@ -1,0 +1,15 @@
+<?php
+session_start();
+include"func.php";
+ include"common.php";
+ check();
+$title=$_POST['title'];
+$author=$_POST['author'];
+$text=$_POST['text'];
+$id = $_POST['id'];
+$table="art_admin1";
+$where="id=$id";
+$array=array(title=>$title,author=>$author,text=>$text);
+$res=update($table,$array,$where);
+echo "<script>alert('修改成功');window.location.href='major.php'</script>";
+?>

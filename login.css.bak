@@ -1,0 +1,130 @@
+body{
+    margin-top:0px;
+    margin-left:0px;
+}
+
+
+.login {
+    width:100%;
+    background-image:url("..\login.jpg");
+    background-size: 100%;
+    background-repeat:no-repeat;
+
+}
+
+
+
+.log{
+    height:40px;
+    width:130px;
+    margin-top:0px;
+    margin-left:60px;
+    background-image:url("1540640399(1).jpg");
+    background-size: 100%;
+
+
+}
+#login_form {
+    width: 400px;
+    height: 250px;
+    padding: 13px;
+
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -210px;
+    margin-top: -210px;
+
+    background-color: rgba(240, 255, 255, 0.5);
+
+    border-radius: 10px;
+
+    text-align: center;
+
+}
+
+form p > * {
+    display: inline-block;
+    vertical-align: middle;
+	text-indent:1em;
+
+
+
+}
+
+#image_logo {
+    margin-top: 22px;
+}
+
+.label_input {
+    font-size: 14px;
+    font-family: ����;
+
+    width: 65px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+
+    color: white;
+    background-color: #3CD8FF;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.text_box {
+    width: 278px;
+    height: 28px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 2px 2px 1px #d3b9bf inset;
+    border: 0;
+}
+
+
+.login_btn{
+    font-size: 14px;
+    width: 120px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    color: white;
+    background-color: #3BD9FF;
+    border-radius: 6px;
+    border: 0;
+
+}
+
+.dl{
+    position: relative;
+    left:60px;
+    top:20px;
+    float: left;
+}
+
+a:link { text-decoration:none;}
+#forget_pwd {
+    font-size: 17px;
+    color: #3BD9FF;
+    text-decoration: none;
+    position: relative;
+	right:60px;
+    float: right;
+    top: 25px;
+
+}
+
+
+
+#login_control {
+    padding: 0 28px;
+}
+
+
+
+
+.up_text{
+color:red;
+width:400px;
+margin:0 auto;
+
+}
